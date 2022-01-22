@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FileUploaderApp</title>
+</head>
+<body>
+
+
+<form action="/file/upload" method="post" enctype="multipart/form-data">
+
+    <fieldset style="width:30%">
+        <legend>Upload files</legend>
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="email" placeholder="email"/>
+        <input type="file" name="file" multiple/>
+        <input type="submit" name="submit" value="Submit"/>
+    </fieldset>
+</form>
+
+</body>
+</html>
