@@ -28,8 +28,10 @@ public class FileUploadController {
                 System.out.println("Email: "+email);
                 System.out.println("Size: "+ file.getSize());
 
-                FileStorageCache.cache.put(file.getOriginalFilename(), file);
-                uploadedFiles++;
+                if (!file.getOriginalFilename().isEmpty()) {
+                    FileStorageCache.cache.put(file.getOriginalFilename(), file);
+                    uploadedFiles++;
+                }
             }
         }
 
