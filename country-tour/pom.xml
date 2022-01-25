@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dido.springboot.demo</groupId>
-	<artifactId>mycoolbootapp</artifactId>
+	<artifactId>country-tour</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mycoolbootapp</name>
+	<name>CountryTour</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
