@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AddressControllerTest {
+class AddressControllerTest {
 
     @LocalServerPort
     private int port;
@@ -17,8 +18,14 @@ public class AddressControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void test_shipping_ok() throws Exception {
+    void getMinAddressDistanceOkTest() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/address/70785",
                 String.class)).contains("Shortest distance shipping address zip code: 70811");
     }
+    @Test
+    void getMinAddressDistanceErrorTest() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/address/",
+                String.class)).contains("Use a zip code and try again!");
+    }
+
 }
