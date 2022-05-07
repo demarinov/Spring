@@ -18,7 +18,7 @@ public class DefaultControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    void defaultTest() {
+    void rootTest() {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class))
                 .contains("This is default endpoint. Use /address/{zip_code} to get actual data.");

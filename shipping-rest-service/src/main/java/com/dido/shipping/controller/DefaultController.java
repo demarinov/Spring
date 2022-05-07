@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DefaultController {
 
     @GetMapping("/")
-    public String test() {
+    public String root() {
         return "This is default endpoint. Use /address/{zip_code} to get actual data.";
     }
 }
