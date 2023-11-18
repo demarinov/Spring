@@ -1,4 +1,4 @@
-# $$\color{green}{Spring Apps}$$
+# $$\color{green}{Spring\ Apps}$$
 
 Projects:
   - country-tour -> REST Service for retrieving country info from third-party services  
