@@ -6,6 +6,12 @@ It takes the country and currency data from external REST APIs.
 > [!NOTE] 
 > Mind that external APIs might change in future thus making the app broken
 
+## 🎨 Design
+<p align="center">
+   <img  src="https://github.com/demarinov/spring/blob/master/country-tour/pics/CountryTourDesign.png" alt="CountryTourDesign"
+      width="60%" height="40%"/>
+</p>
+
 ## 🌱 Project View
 <p align="center">
    <img src="https://github.com/demarinov/spring/blob/master/country-tour/pics/CountryTourAPI.png" alt="CountryTour"
