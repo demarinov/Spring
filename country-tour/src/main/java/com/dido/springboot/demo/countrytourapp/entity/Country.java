@@ -1,19 +1,20 @@
 package com.dido.springboot.demo.countrytourapp.entity;
 
 import java.util.List;
+import java.util.Map;
 
 public class Country {
 
 	private String name;
 	private String alpha2Code;
 	private List<String> borders;
-	private List<Currency> currencies;
+	private Map<String, Currency> currencies;
 	
 	public Country() {
 		
 	}
 
-	public Country(String name, String alpha2Code, List<String> borders, List<Currency> currencies) {
+	public Country(String name, String alpha2Code, List<String> borders, Map<String, Currency> currencies) {
 		this.name = name;
 		this.alpha2Code = alpha2Code;
 		this.borders = borders;
@@ -21,7 +22,7 @@ public class Country {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -44,11 +45,11 @@ public class Country {
 		this.borders = borders;
 	}
 
-	public List<Currency> getCurrencies() {
+	public Map<String, Currency> getCurrencies() {
 		return currencies;
 	}
 
-	public void setCurrencies(List<Currency> currencies) {
+	public void setCurrencies(Map<String, Currency> currencies) {
 		this.currencies = currencies;
 	}
 	

@@ -6,6 +6,8 @@ public class CurrencyRate {
 
 	private Map<String,Double> rates;
 	private String base;
+
+	private String target;
 	
 	public CurrencyRate() {
 		
@@ -14,6 +16,14 @@ public class CurrencyRate {
 	public CurrencyRate(Map<String, Double> rates, String base) {
 		this.rates = rates;
 		this.base = base;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
 	}
 
 	public Map<String, Double> getRates() {
