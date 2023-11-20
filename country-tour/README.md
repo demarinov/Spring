@@ -3,10 +3,14 @@
 ## Introduction
 This project is a RESTful app/service that calculates the number of tours around neighbour countries by given budget.
 It takes the country and currency data from external REST APIs.
-[!Note] Mind that external APIs might change in future thus making the app broken
+> [!NOTE] 
+> Mind that external APIs might change in future thus making the app broken
 
 ## Projects
-
+<p>
+   <img src="https://github.com/demarinov/spring/blob/master/country-tour/pics/CountryTourAPI.png" alt="CountryTour"
+      width="200px" height="100px"/>
+</p>
 
 
 ## 🛠️ Technology
