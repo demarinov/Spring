@@ -13,6 +13,7 @@
 	<artifactId>country-tour</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CountryTour</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
