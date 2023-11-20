@@ -1,9 +1,9 @@
 # $$\color{green}{Spring\ Apps}$$
 
-## Projects
-  - country-tour -> REST Service for retrieving country info from third-party services  
-  - file-upload-app -> Simple Spring Web MVC file uploader
-  - shipping-rest-service -> Rest service for finding a shipping address within min distance 
+## 🎦 Projects
+  - [country-tour](https://github.com/demarinov/spring/blob/master/country-tour/) -> REST Service for retrieving country info from third-party services  
+  - [file-upload-app](https://github.com/demarinov/spring/tree/master/file-upload-app) -> Simple Spring Web MVC file uploader
+  - [shipping-rest-service](https://github.com/demarinov/spring/tree/master/shipping-rest-service) -> Rest service for finding a shipping address within min distance 
 
 
 ## 🛠️ Technology
