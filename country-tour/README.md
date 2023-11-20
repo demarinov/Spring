@@ -9,7 +9,7 @@ It takes the country and currency data from external REST APIs.
 ## Projects
 <p>
    <img src="https://github.com/demarinov/spring/blob/master/country-tour/pics/CountryTourAPI.png" alt="CountryTour"
-      width="500px" height="300px"/>
+      width="100%" height="60%"/>
 </p>
 
 
