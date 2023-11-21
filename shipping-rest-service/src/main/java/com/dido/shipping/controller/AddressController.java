@@ -27,6 +27,6 @@ public class AddressController {
 
     @GetMapping("/")
     public String getDefaultAddressMessage() {
-        return "<strong>Use a zip code and try again!</strong>";
+        return "<h1>Use a zip code and try again!</h1>";
     }
 }

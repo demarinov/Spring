@@ -24,7 +24,7 @@ public class AddressServiceImpl implements AddressService {
     private static final String LONGITUDE_FIELD = "longitude";
     private static final String ERROR_PROCESSING_MSG = "Error processing request with zip code: ";
     private static final String ERROR_PARSING_MSG_FORMAT = "Error parsing address with zip code: {}";
-    private static final String OUTPUT_MSG_FORMAT = "<strong>Shortest distance shipping address zip code: %s</strong>";
+    private static final String OUTPUT_MSG_FORMAT = "<h1>Shortest distance shipping address zip code: %s</h1>";
 
     private final Map<String, String> shippingAddressMap;
     private final ObjectMapper mapper;
