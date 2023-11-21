@@ -1,13 +1,16 @@
 
-$$\color{green}{Shipping\ Rest\ Service}$$
+## $$\color{green}{Shipping\ Rest\ Service}$$
 
 ## 🚀 App Info
 - Rest shipping service that provides minimum distance calculation to deliver package from given source to predefined destinations
 - Destination codes are configured as follows : 70115, 70508, 70811
 - For locations retrieval the following REST API is used : [Loc API](https://api.zippopotam.us/us/)
 
-## Design
+>[!NOTE]
+>Mind that external APIs might change in future and this may break the app
 
+## Design
+![ShippingDesign](https://github.com/demarinov/spring/blob/master/shipping-rest-service/pics/ShippingService.png)
 
 ## 🧰 Setup
 - Java and Maven should be installed on the environment
