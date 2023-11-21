@@ -3,7 +3,9 @@ package com.dido.springboot.demo.countrytourapp.services;
 import java.util.*;
 import java.util.logging.Logger;
 
+import com.dido.springboot.demo.countrytourapp.entity.CountryBudgetInfo;
 import com.dido.springboot.demo.countrytourapp.entity.Currency;
+import com.dido.springboot.demo.countrytourapp.rest.CountryTourRestController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -153,6 +155,47 @@ public class CountryRateServiceImpl implements CountryRateService {
 		CurrencyRate currencyRate = responseEntity.getBody();
 		Objects.requireNonNull(currencyRate).setTarget(targetCurrency);
 		return currencyRate;
+	}
+
+	public CountryBudgetInfo calculateCountryBudgetInfo(String budgetPerCountry, String totalBudget,
+														 String countryCode, String currency) {
+		CountryBudgetInfo budgetInfo = new CountryBudgetInfo();
+
+		if (currency == null || currency.length() < 3) {
+			logger.finer(String.format("%s%s%s%s",getClass(), ".calculateCountryBudgetInfo(): Provided base currency code is invalid ", currency
+					, ",use default base currency EUR"));
+			currency = "EUR";
+		}
+
+		Map<String, CurrencyRate> currencyRateMap = getNeighboursMap(CountryTourRestController.countryCodePrefix + countryCode, currency);
+		budgetInfo.setCountryRates(currencyRateMap);
+		double numberOfToursWithLeftOver = (Double.parseDouble(totalBudget)
+				/ (Double.parseDouble(budgetPerCountry) * currencyRateMap.size()));
+		int numberOfTours = (int) (Double.parseDouble(totalBudget)
+				/ (Double.parseDouble(budgetPerCountry) * currencyRateMap.size()));
+		budgetInfo.setNumberOfTours(numberOfTours);
+		Double leftOver = (double) Math.round((numberOfToursWithLeftOver - numberOfTours)
+				* Double.parseDouble(budgetPerCountry) * currencyRateMap.size() * 100.0) / 100.0;
+
+		budgetInfo.setLeftOverBudget(leftOver + " " + currency);
+		Map<String, String> convertedBudgets = new HashMap<>();
+
+		for (Map.Entry<String, CurrencyRate> entry : currencyRateMap.entrySet()) {
+			CurrencyRate value = entry.getValue();
+			Double rate = value.getRates().get(value.getTarget());
+
+			Double convertedBudget = (rate * Double.parseDouble(budgetPerCountry));
+			if (rate == 1.00D) {
+				convertedBudgets.put(entry.getKey(), String.format("%.2f", convertedBudget) + " " + currency);
+			} else {
+				String realCurrency = value.getTarget();
+				convertedBudgets.put(entry.getKey(), String.format("%.2f", convertedBudget) + " " + realCurrency);
+			}
+		}
+
+		budgetInfo.setConvertedCountryTourBudgets(convertedBudgets);
+
+		return budgetInfo;
 	}
 
 }

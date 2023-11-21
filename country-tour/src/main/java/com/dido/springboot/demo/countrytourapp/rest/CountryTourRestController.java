@@ -23,7 +23,7 @@ public class CountryTourRestController {
 
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    private static final String countryCodePrefix = "alpha/";
+    public static final String countryCodePrefix = "alpha/";
 
     private final CountryRateService crService;
 
@@ -85,50 +85,9 @@ public class CountryTourRestController {
         logger.info(String.format("%s%s%s", getClass(), ".getCountryBudgetInfo():property currency", currency));
         Map<String, CountryBudgetInfo> countryTourBudget = new HashMap<>();
         countryTourBudget.put("countryTourBudget",
-                calculateCountryBudgetInfo(budgetPerCountry, totalBudget, countryCode, currency));
+                crService.calculateCountryBudgetInfo(budgetPerCountry, totalBudget, countryCode, currency));
 
         return countryTourBudget;
 
-    }
-
-    private CountryBudgetInfo calculateCountryBudgetInfo(String budgetPerCountry, String totalBudget,
-                                                         String countryCode, String currency) {
-        CountryBudgetInfo budgetInfo = new CountryBudgetInfo();
-
-        if (currency == null || currency.length() < 3) {
-            logger.finer(String.format("%s%s%s%s",getClass(), ".calculateCountryBudgetInfo(): Provided base currency code is invalid ", currency
-                    , ",use default base currency EUR"));
-            currency = "EUR";
-        }
-
-        Map<String, CurrencyRate> currencyRateMap = crService.getNeighboursMap(countryCodePrefix + countryCode, currency);
-        budgetInfo.setCountryRates(currencyRateMap);
-        double numberOfToursWithLeftOver = (Double.parseDouble(totalBudget)
-                / (Double.parseDouble(budgetPerCountry) * currencyRateMap.size()));
-        int numberOfTours = (int) (Double.parseDouble(totalBudget)
-                / (Double.parseDouble(budgetPerCountry) * currencyRateMap.size()));
-        budgetInfo.setNumberOfTours(numberOfTours);
-        Double leftOver = (double) Math.round((numberOfToursWithLeftOver - numberOfTours)
-                * Double.parseDouble(budgetPerCountry) * currencyRateMap.size() * 100.0) / 100.0;
-
-        budgetInfo.setLeftOverBudget(leftOver + " " + currency);
-        Map<String, String> convertedBudgets = new HashMap<>();
-
-        for (Entry<String, CurrencyRate> entry : currencyRateMap.entrySet()) {
-            CurrencyRate value = entry.getValue();
-            Double rate = value.getRates().get(value.getTarget());
-
-            Double convertedBudget = (rate * Double.parseDouble(budgetPerCountry) * numberOfTours);
-            if (rate == 1.00D) {
-                convertedBudgets.put(entry.getKey(), String.format("%.2f", convertedBudget) + " " + currency);
-            } else {
-                String realCurrency = value.getTarget();
-                convertedBudgets.put(entry.getKey(), String.format("%.2f", convertedBudget) + " " + realCurrency);
-            }
-        }
-
-        budgetInfo.setConvertedCountryTourBudgets(convertedBudgets);
-
-        return budgetInfo;
     }
 }
