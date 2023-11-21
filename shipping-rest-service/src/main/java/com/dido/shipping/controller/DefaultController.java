@@ -8,6 +8,6 @@ public class DefaultController {
 
     @GetMapping("/")
     public String root() {
-        return "<strong>This is default endpoint. Use /address/{zip_code} to get actual data.</strong>";
+        return "<h1>This is default endpoint. Use /address/{zip_code} to get actual data.</h1>";
     }
 }
