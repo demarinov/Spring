@@ -1,6 +1,7 @@
 package com.file.upload.controllers;
 
 import com.file.upload.storage.FileStorageCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/file")
+@Slf4j
 public class FileUploadController {
 
     @PostMapping(value = "/upload", consumes = {"multipart/form-data"})
@@ -23,12 +25,12 @@ public class FileUploadController {
 
             for (MultipartFile file : files) {
 
-                System.out.println("Content type: "+file.getContentType());
-                System.out.println("Filename: "+file.getOriginalFilename());
-                System.out.println("Email: "+email);
-                System.out.println("Size: "+ file.getSize());
+                log.debug("Content type: " + file.getContentType());
+                log.debug("Filename: " + file.getOriginalFilename());
+                log.debug("Email: " + email);
+                log.debug("Size: " + file.getSize());
 
-                if (!file.getOriginalFilename().isEmpty()) {
+                if (file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()) {
                     FileStorageCache.cache.put(file.getOriginalFilename(), file);
                     uploadedFiles++;
                 }
@@ -36,6 +38,7 @@ public class FileUploadController {
         }
 
         String message = String.format("%s has uploaded %d ", email, uploadedFiles);
-        return uploadedFiles == 1 ? message + "file" : message + "files";
+        String control = "<button type=\"button\" onclick=\"history.back();\">Back</button>";
+        return uploadedFiles == 1 ? message + "file "+control : message + "files "+control;
     }
 }

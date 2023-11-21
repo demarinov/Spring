@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>FileUploaderApp</title>
 </head>
-<body>
+<body style="background-color: aquamarine; height: 100%">
 
+<h1 align="center">Simple File Uploader</h1>
 
 <form action="/file/upload" method="post" enctype="multipart/form-data">
 
-    <fieldset style="width:30%">
+    <fieldset style="width:30%; margin: auto">
         <legend>Upload files</legend>
         <label for="email">Email:</label>
         <input id="email" type="text" name="email" placeholder="email"/>
         <input type="file" name="file" multiple/>
-        <input type="submit" name="submit" value="Submit"/>
+        <input type="submit" name="submit" value="Submit" style="background-color: cornflowerblue; color: aliceblue"/>
     </fieldset>
 </form>
 

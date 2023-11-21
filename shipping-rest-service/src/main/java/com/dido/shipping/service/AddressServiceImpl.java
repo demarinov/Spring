@@ -24,7 +24,7 @@ public class AddressServiceImpl implements AddressService {
     private static final String LONGITUDE_FIELD = "longitude";
     private static final String ERROR_PROCESSING_MSG = "Error processing request with zip code: ";
     private static final String ERROR_PARSING_MSG_FORMAT = "Error parsing address with zip code: {}";
-    private static final String OUTPUT_MSG_FORMAT = "Shortest distance shipping address zip code: %s";
+    private static final String OUTPUT_MSG_FORMAT = "<strong>Shortest distance shipping address zip code: %s</strong>";
 
     private final Map<String, String> shippingAddressMap;
     private final ObjectMapper mapper;
@@ -33,13 +33,13 @@ public class AddressServiceImpl implements AddressService {
 
     @PostConstruct
     public void initAddressService() {
-        log.info("initAddressService() - start");
+        log.debug("initAddressService() - start");
 
         addressProperties.getShippingZipCodes().forEach(shippingZipCode ->
                 shippingAddressMap.putIfAbsent(shippingZipCode,
                         addressClientService.getAddress(shippingZipCode)));
 
-        log.info("initAddressService() - end");
+        log.debug("initAddressService() - end");
     }
 
     @Override
