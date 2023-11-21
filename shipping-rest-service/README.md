@@ -3,7 +3,7 @@ $$\color{green}{Shipping\ Rest\ Service}$$
 
 ## 🚀 App Info
 - Rest shipping service that provides minimum distance calculation to deliver package from given source to predefined destinations
-- Destination codes are configred as follows : 70115, 70508, 70811
+- Destination codes are configured as follows : 70115, 70508, 70811
 - For locations retrieval the following REST API is used : [Loc API](https://api.zippopotam.us/us/)
 
 ## Design
