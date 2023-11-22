@@ -9,7 +9,7 @@
 >[!NOTE]
 >Mind that external APIs might change in future and this may break the app
 
-## Design
+## 🎨 Design
 ![ShippingDesign](https://github.com/demarinov/spring/blob/master/shipping-rest-service/pics/ShippingService.png)
 
 ## 🧰 Setup
