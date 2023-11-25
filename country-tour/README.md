@@ -4,7 +4,7 @@
 This project is a RESTful app/service that calculates the number of tours around neighbour countries by given budget.
 It takes the country and currency data from external REST APIs.
 > [!NOTE] 
-> Mind that external APIs might change in future thus making the app broken
+> External APIs might change in future and therefore could break the app
 
 ## 🎨 Design
 <p align="center">
