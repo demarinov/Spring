@@ -1,10 +1,10 @@
 # $$\color{aqua}{Country\ Tour}$$
 
 ## 🚀 Introduction
-This project is a RESTful app/service that calculates the number of tours around neighbour countries by given budget.
+This project contains a REST service that calculates the number of tours around neighbour countries by given budget.
 It takes the country and currency data from external REST APIs.
 > [!NOTE] 
-> External APIs might change in future and therefore could break the app
+> External APIs might change in future and therefore could break the service
 
 ## 🎨 Design
 <p align="center">
